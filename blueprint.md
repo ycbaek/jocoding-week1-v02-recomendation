@@ -3,20 +3,22 @@
 ## Overview
 LunchGenie is a single-page web application designed to solve the "what's for lunch?" dilemma. It provides users with random lunch menu recommendations based on selectable categories. The app features a modern, responsive design with a "spin" mechanic to make the decision process fun.
 
-## Current Plan: Add Review Box
+## Current Plan: Add Animal Classifier
 ### Goal
-Integrate a user review/feedback form using Formspree to collect user thoughts on LunchGenie.
+Integrate a Teachable Machine image model to distinguish between dogs, cats, and cows using the user's webcam.
 
 ### Steps
-1.  **Form Implementation (HTML):**
-    *   Add a new `<section>` for user reviews before the footer in `index.html`.
-    *   Implement the Formspree form with email and message fields as provided.
+1.  **Structure (HTML):**
+    *   Add the required TensorFlow.js and Teachable Machine script libraries to `index.html`.
+    *   Add a new `<section>` for the "Animal Classifier" after the review section.
+    *   Add the "Start" button, webcam container, and label container.
 2.  **Styling (CSS):**
-    *   Style the review section to match the "LunchGenie" aesthetic (warm colors, rounded corners, clean typography).
-    *   Ensure the form is responsive and visually integrated with the existing layout.
-3.  **Verification:**
-    *   Confirm the form is correctly linked to the Formspree endpoint.
-    *   Ensure the layout remains clean and functional.
+    *   Style the new section to match the app's design (card style, centered).
+    *   Style the webcam canvas and prediction labels.
+3.  **Logic (JavaScript):**
+    *   Integrate the Teachable Machine logic into `main.js`.
+    *   Wire up the "Start" button to initialize the webcam and model.
+    *   Display real-time predictions in the UI.
 
 ## Project Documentation
 ### Features
@@ -25,4 +27,5 @@ Integrate a user review/feedback form using Formspree to collect user thoughts o
 *   **Interactive UI:** "Spin" button with visual feedback.
 *   **Responsive Layout:** Optimized for both mobile and desktop views.
 *   **Web Components:** Utilizes custom elements for modular UI components like the result card.
-*   **User Feedback (New):** Integrated Formspree review box for user feedback.
+*   **User Feedback:** Integrated Formspree review box.
+*   **Animal Classifier (New):** AI-powered dog/cat/cow classifier using webcam input.

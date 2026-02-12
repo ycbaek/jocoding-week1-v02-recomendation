@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
   <div class="app-container">
@@ -67,6 +69,19 @@
         </div>
         <button type="submit" class="submit-btn">Send Feedback</button>
       </form>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section class="ai-section" aria-labelledby="ai-title">
+      <h2 id="ai-title">Pet Detector 🐶🐱🐮</h2>
+      <p>Is it a Dog, Cat, or Cow? Use our AI to find out!</p>
+      
+      <div class="ai-container">
+        <button type="button" id="ai-start-btn" class="ai-btn">Start Camera</button>
+        <div id="webcam-container" class="webcam-view"></div>
+        <div id="label-container" class="ai-labels"></div>
+      </div>
     </section>
 
     <footer>
