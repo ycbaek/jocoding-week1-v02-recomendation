@@ -2,69 +2,220 @@
  * Data Source
  */
 const LUNCH_DATA = [
+  // Fast Food
   {
     id: 1,
     name: "Classic Cheeseburger",
     category: "Fast Food",
-    description: "Juicy beef patty, cheddar, lettuce, tomato, and secret sauce.",
+    description: "Juicy beef patty topped with melted cheddar, crisp lettuce, ripe tomato, and our signature secret sauce on a toasted sesame bun. A timeless comfort food favorite that never disappoints.",
     image: "https://placehold.co/600x400/orange/white?text=Cheeseburger",
-    price: "$$"
-  },
-  {
-    id: 2,
-    name: "Caesar Salad",
-    category: "Healthy",
-    description: "Crisp romaine, parmesan, croutons, and creamy dressing.",
-    image: "https://placehold.co/600x400/green/white?text=Caesar+Salad",
-    price: "$$"
-  },
-  {
-    id: 3,
-    name: "Spicy Tuna Roll",
-    category: "Asian",
-    description: "Fresh tuna, spicy mayo, and cucumber wrapped in rice and seaweed.",
-    image: "https://placehold.co/600x400/red/white?text=Sushi",
-    price: "$$$"
-  },
-  {
-    id: 4,
-    name: "Chicken Burrito Bowl",
-    category: "Mexican",
-    description: "Grilled chicken, rice, beans, salsa, and guacamole.",
-    image: "https://placehold.co/600x400/yellow/black?text=Burrito+Bowl",
-    price: "$$"
-  },
-  {
-    id: 5,
-    name: "Margherita Pizza",
-    category: "Italian",
-    description: "Tomato sauce, fresh mozzarella, and basil on a thin crust.",
-    image: "https://placehold.co/600x400/brown/white?text=Pizza",
-    price: "$$"
-  },
-  {
-    id: 6,
-    name: "Pad Thai",
-    category: "Asian",
-    description: "Stir-fried rice noodles with egg, peanuts, and bean sprouts.",
-    image: "https://placehold.co/600x400/orange/white?text=Pad+Thai",
-    price: "$$"
-  },
-  {
-    id: 7,
-    name: "Grilled Salmon",
-    category: "Healthy",
-    description: "Fresh salmon fillet with roasted vegetables.",
-    image: "https://placehold.co/600x400/salmon/white?text=Salmon",
-    price: "$$$"
+    price: "$$",
+    calories: 540,
+    prepTime: "10 min"
   },
   {
     id: 8,
     name: "Fried Chicken Sandwich",
     category: "Fast Food",
-    description: "Crispy fried chicken breast with pickles and mayo.",
+    description: "Crispy buttermilk-brined chicken breast fried to golden perfection, served with tangy pickles and creamy mayo on a buttery brioche bun.",
     image: "https://placehold.co/600x400/gold/black?text=Fried+Chicken",
-    price: "$"
+    price: "$",
+    calories: 620,
+    prepTime: "12 min"
+  },
+  {
+    id: 9,
+    name: "Double Bacon Smash Burger",
+    category: "Fast Food",
+    description: "Two thin smashed beef patties with crispy bacon, American cheese, caramelized onions, and smoky barbecue sauce. The ultimate indulgent burger experience.",
+    image: "https://placehold.co/600x400/8B4513/white?text=Smash+Burger",
+    price: "$$",
+    calories: 780,
+    prepTime: "10 min"
+  },
+  {
+    id: 10,
+    name: "Fish and Chips",
+    category: "Fast Food",
+    description: "Beer-battered Atlantic cod fillets served with thick-cut golden fries, mushy peas, and homemade tartar sauce. A British classic done right.",
+    image: "https://placehold.co/600x400/DAA520/white?text=Fish+%26+Chips",
+    price: "$$",
+    calories: 680,
+    prepTime: "15 min"
+  },
+  // Healthy
+  {
+    id: 2,
+    name: "Caesar Salad",
+    category: "Healthy",
+    description: "Crisp romaine hearts tossed with shaved parmesan, crunchy garlic croutons, and our house-made creamy Caesar dressing. Light yet satisfying.",
+    image: "https://placehold.co/600x400/green/white?text=Caesar+Salad",
+    price: "$$",
+    calories: 320,
+    prepTime: "8 min"
+  },
+  {
+    id: 7,
+    name: "Grilled Salmon",
+    category: "Healthy",
+    description: "Wild-caught salmon fillet grilled with lemon and herbs, served over a bed of roasted seasonal vegetables and quinoa. Rich in omega-3 fatty acids.",
+    image: "https://placehold.co/600x400/salmon/white?text=Salmon",
+    price: "$$$",
+    calories: 420,
+    prepTime: "18 min"
+  },
+  {
+    id: 11,
+    name: "Quinoa Buddha Bowl",
+    category: "Healthy",
+    description: "Fluffy quinoa topped with roasted sweet potato, avocado, chickpeas, shredded kale, and a bright tahini-lemon dressing. Plant-powered and protein-rich.",
+    image: "https://placehold.co/600x400/2E8B57/white?text=Buddha+Bowl",
+    price: "$$",
+    calories: 380,
+    prepTime: "15 min"
+  },
+  {
+    id: 12,
+    name: "Grilled Chicken Wrap",
+    category: "Healthy",
+    description: "Herb-marinated grilled chicken with mixed greens, cherry tomatoes, cucumber, and Greek yogurt dressing wrapped in a whole wheat tortilla.",
+    image: "https://placehold.co/600x400/6B8E23/white?text=Chicken+Wrap",
+    price: "$$",
+    calories: 350,
+    prepTime: "10 min"
+  },
+  {
+    id: 13,
+    name: "Acai Smoothie Bowl",
+    category: "Healthy",
+    description: "Thick blended acai berry base topped with fresh banana slices, granola, chia seeds, coconut flakes, and a drizzle of honey. Antioxidant-packed and refreshing.",
+    image: "https://placehold.co/600x400/4B0082/white?text=Acai+Bowl",
+    price: "$$",
+    calories: 290,
+    prepTime: "5 min"
+  },
+  // Asian
+  {
+    id: 3,
+    name: "Spicy Tuna Roll",
+    category: "Asian",
+    description: "Sushi-grade tuna mixed with spicy mayo and cucumber, expertly rolled in seasoned sushi rice and crispy nori seaweed. A sushi bar favorite.",
+    image: "https://placehold.co/600x400/red/white?text=Sushi",
+    price: "$$$",
+    calories: 310,
+    prepTime: "12 min"
+  },
+  {
+    id: 6,
+    name: "Pad Thai",
+    category: "Asian",
+    description: "Stir-fried flat rice noodles with shrimp, scrambled egg, crunchy bean sprouts, and crushed peanuts in a sweet and tangy tamarind sauce. Thailand's signature dish.",
+    image: "https://placehold.co/600x400/orange/white?text=Pad+Thai",
+    price: "$$",
+    calories: 450,
+    prepTime: "15 min"
+  },
+  {
+    id: 14,
+    name: "Korean Bibimbap",
+    category: "Asian",
+    description: "Steamed rice topped with sauteed vegetables, marinated beef bulgogi, a fried egg, and spicy gochujang sauce. Mix it all together for a harmony of flavors.",
+    image: "https://placehold.co/600x400/B22222/white?text=Bibimbap",
+    price: "$$",
+    calories: 490,
+    prepTime: "20 min"
+  },
+  {
+    id: 15,
+    name: "Chicken Ramen",
+    category: "Asian",
+    description: "Rich tonkotsu-style broth simmered for hours, served with tender chashu chicken, soft-boiled egg, corn, nori, and springy wheat noodles.",
+    image: "https://placehold.co/600x400/D2691E/white?text=Ramen",
+    price: "$$",
+    calories: 520,
+    prepTime: "8 min"
+  },
+  {
+    id: 16,
+    name: "Vietnamese Pho",
+    category: "Asian",
+    description: "Aromatic beef bone broth with tender rice noodles, thinly sliced beef, and fresh herbs including Thai basil, cilantro, and bean sprouts. Comfort in a bowl.",
+    image: "https://placehold.co/600x400/8B6914/white?text=Pho",
+    price: "$$",
+    calories: 430,
+    prepTime: "10 min"
+  },
+  // Mexican
+  {
+    id: 4,
+    name: "Chicken Burrito Bowl",
+    category: "Mexican",
+    description: "Grilled citrus-marinated chicken over cilantro-lime rice with black beans, fresh pico de gallo, sour cream, and creamy guacamole.",
+    image: "https://placehold.co/600x400/yellow/black?text=Burrito+Bowl",
+    price: "$$",
+    calories: 560,
+    prepTime: "12 min"
+  },
+  {
+    id: 17,
+    name: "Street Tacos",
+    category: "Mexican",
+    description: "Three soft corn tortillas filled with seasoned carne asada, fresh cilantro, diced onions, and a squeeze of lime. Authentic Mexican street food.",
+    image: "https://placehold.co/600x400/FF6347/white?text=Tacos",
+    price: "$",
+    calories: 420,
+    prepTime: "10 min"
+  },
+  {
+    id: 18,
+    name: "Chicken Quesadilla",
+    category: "Mexican",
+    description: "Flour tortilla stuffed with seasoned grilled chicken, melted Oaxaca cheese, roasted peppers, and served with salsa verde and sour cream.",
+    image: "https://placehold.co/600x400/FFD700/black?text=Quesadilla",
+    price: "$",
+    calories: 480,
+    prepTime: "8 min"
+  },
+  // Italian
+  {
+    id: 5,
+    name: "Margherita Pizza",
+    category: "Italian",
+    description: "San Marzano tomato sauce, creamy fresh mozzarella, and fragrant basil leaves on a perfectly charred thin crust. Simple Italian perfection since 1889.",
+    image: "https://placehold.co/600x400/brown/white?text=Pizza",
+    price: "$$",
+    calories: 600,
+    prepTime: "15 min"
+  },
+  {
+    id: 19,
+    name: "Spaghetti Carbonara",
+    category: "Italian",
+    description: "Al dente spaghetti tossed in a silky sauce of egg yolks, pecorino Romano, crispy guanciale, and freshly cracked black pepper. Roman tradition at its finest.",
+    image: "https://placehold.co/600x400/F5DEB3/black?text=Carbonara",
+    price: "$$",
+    calories: 550,
+    prepTime: "15 min"
+  },
+  {
+    id: 20,
+    name: "Chicken Parmigiana",
+    category: "Italian",
+    description: "Breaded chicken cutlet baked with marinara sauce and bubbling mozzarella cheese, served over a bed of linguine pasta. Hearty Italian-American comfort food.",
+    image: "https://placehold.co/600x400/CD853F/white?text=Chicken+Parm",
+    price: "$$",
+    calories: 650,
+    prepTime: "20 min"
+  },
+  {
+    id: 21,
+    name: "Mushroom Risotto",
+    category: "Italian",
+    description: "Creamy Arborio rice slowly cooked with wild mushrooms, white wine, shallots, and finished with butter and aged Parmigiano-Reggiano.",
+    image: "https://placehold.co/600x400/8B8682/white?text=Risotto",
+    price: "$$$",
+    calories: 470,
+    prepTime: "25 min"
   }
 ];
 
@@ -159,6 +310,20 @@ class LunchCard extends HTMLElement {
           margin: 0;
         }
 
+        .meta {
+          display: flex;
+          gap: 1rem;
+          margin-top: 0.75rem;
+          padding-top: 0.75rem;
+          border-top: 1px solid #eee;
+        }
+
+        .meta span {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: #999;
+        }
+
         @keyframes popIn {
           from { opacity: 0; transform: scale(0.9) translateY(20px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
@@ -176,6 +341,10 @@ class LunchCard extends HTMLElement {
             <span class="price">${item.price}</span>
           </div>
           <p>${item.description}</p>
+          <div class="meta">
+            ${item.calories ? `<span>~${item.calories} cal</span>` : ''}
+            ${item.prepTime ? `<span>${item.prepTime}</span>` : ''}
+          </div>
         </div>
       </div>
     `;
@@ -440,4 +609,16 @@ async function determineFinalResult() {
 
 if (aiStartBtn) {
   aiStartBtn.addEventListener('click', initAI);
+}
+
+/**
+ * Mobile Navigation Toggle
+ */
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
 }
