@@ -1,1 +1,183 @@
-/* Add styles here */
+:root {
+  /* Warm, appetizing colors */
+  --primary: oklch(65% 0.2 30); /* Warm Orange */
+  --primary-dark: oklch(55% 0.2 30);
+  --secondary: oklch(85% 0.15 85); /* Fresh Yellow/Green */
+  --accent: oklch(60% 0.2 340); /* Pinkish Red */
+  --background: oklch(98% 0.02 90); /* Warm White */
+  --surface: oklch(100% 0 0); /* White */
+  --text-main: oklch(20% 0.05 30);
+  --text-muted: oklch(50% 0.05 30);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--text-muted);
+}
+
+/* Filter Chips */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.filter-chip {
+  background: var(--surface);
+  border: 2px solid oklch(90% 0.02 90);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.filter-chip:hover {
+  border-color: var(--primary);
+}
+
+.filter-chip.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Result Area */
+.result-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  perspective: 1000px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.spin-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding: 1rem 3rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s;
+}
+
+.spin-button:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-dark);
+}
+
+.spin-button:active {
+  transform: scale(0.95);
+}
+
+.spin-button:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+.car-rental-section {
+  background: var(--surface);
+  border: 1px solid oklch(90% 0.02 90);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.car-rental-section h2 {
+  color: var(--text-main);
+  font-size: 1.35rem;
+}
+
+.car-rental-section p {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.car-rental-link {
+  align-self: flex-start;
+  text-decoration: none;
+  background-color: var(--secondary);
+  color: var(--text-main);
+  font-weight: 700;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-full);
+}
+
+.car-rental-link:hover {
+  filter: brightness(0.97);
+}
+
+/* Placeholder state for the card */
+lunch-card:empty::before {
+  content: 'Hit the button to get hungry!';
+  display: block;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  text-align: center;
+  width: 100%;
+}

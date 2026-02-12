@@ -3,12 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>LunchGenie - What's for Lunch?</title>
   <link href='/style.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="app-container">
+    <header>
+      <h1>LunchGenie 🧞‍♂️</h1>
+      <p>Can't decide? Let the genie choose!</p>
+    </header>
+
+    <main>
+      <section class="filters" id="filters">
+        <!-- Filters will be injected here via JS -->
+      </section>
+
+      <div class="result-area">
+        <lunch-card id="result-card"></lunch-card>
+      </div>
+
+      <div class="controls">
+        <button id="spin-btn" class="spin-button">Find Lunch!</button>
+      </div>
+    </main>
+
+    <section class="car-rental-section" aria-labelledby="car-rental-title">
+      <h2 id="car-rental-title">Car Rental Service</h2>
+      <p>Need a ride too? Rent compact, sedan, or SUV options with flexible pickup times.</p>
+      <a class="car-rental-link" href="#" aria-label="Learn more about car rental service">Explore Car Rental</a>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 LunchGenie</p>
+    </footer>
+  </div>
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
