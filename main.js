@@ -404,8 +404,11 @@ async function loop() {
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
     for (let i = 0; i < maxPredictions; i++) {
+        let className = prediction[i].className;
+        if (className.toLowerCase() === 'dod') className = 'Dog';
+        
         const classPrediction =
-            prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
+            className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
         labelContainer.childNodes[i].innerHTML = classPrediction;
     }
 }
@@ -424,6 +427,8 @@ async function determineFinalResult() {
           winner = prediction[i].className;
       }
   }
+
+  if (winner.toLowerCase() === 'dod') winner = 'Dog';
 
   // Display Result
   labelContainer.innerHTML = `
