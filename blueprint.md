@@ -3,22 +3,18 @@
 ## Overview
 LunchGenie is a single-page web application designed to solve the "what's for lunch?" dilemma. It provides users with random lunch menu recommendations based on selectable categories. The app features a modern, responsive design with a "spin" mechanic to make the decision process fun.
 
-## Current Plan: Add Animal Classifier
+### Current Plan: Update Animal Classifier Logic
 ### Goal
-Integrate a Teachable Machine image model to distinguish between dogs, cats, and cows using the user's webcam.
+Modify the "Pet Detector" to analyze the video feed for 3 seconds and then present a final result, rather than running continuously.
 
 ### Steps
-1.  **Structure (HTML):**
-    *   Add the required TensorFlow.js and Teachable Machine script libraries to `index.html`.
-    *   Add a new `<section>` for the "Animal Classifier" after the review section.
-    *   Add the "Start" button, webcam container, and label container.
-2.  **Styling (CSS):**
-    *   Style the new section to match the app's design (card style, centered).
-    *   Style the webcam canvas and prediction labels.
-3.  **Logic (JavaScript):**
-    *   Integrate the Teachable Machine logic into `main.js`.
-    *   Wire up the "Start" button to initialize the webcam and model.
-    *   Display real-time predictions in the UI.
+1.  **Logic (JavaScript):**
+    *   Update `initAI` in `main.js`.
+    *   Implement a 3-second timer after the webcam starts.
+    *   During the 3 seconds, show "Scanning..." or live predictions.
+    *   After 3 seconds, stop the prediction loop and the webcam.
+    *   Identify the category with the highest probability.
+    *   Display the final result prominently.
 
 ## Project Documentation
 ### Features

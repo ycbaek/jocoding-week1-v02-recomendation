@@ -343,6 +343,7 @@ initFilters();
 const URL = "https://teachablemachine.withgoogle.com/models/oYkTMZlP2/";
 let model, webcam, labelContainer, maxPredictions;
 const aiStartBtn = document.getElementById('ai-start-btn');
+let isPredicting = false;
 
 async function initAI() {
   aiStartBtn.disabled = true;
@@ -352,29 +353,40 @@ async function initAI() {
   const metadataURL = URL + "metadata.json";
 
   try {
-    // Load the model and metadata
     model = await window.tmImage.load(modelURL, metadataURL);
     maxPredictions = model.getTotalClasses();
 
-    // Setup webcam
     const flip = true; 
     webcam = new window.tmImage.Webcam(200, 200, flip); 
     await webcam.setup(); 
     await webcam.play();
-    window.requestAnimationFrame(loop);
-
-    // Append elements
+    
+    // Clear previous
     const webcamContainer = document.getElementById("webcam-container");
-    webcamContainer.innerHTML = ''; // Clear previous if any
+    webcamContainer.innerHTML = '';
     webcamContainer.appendChild(webcam.canvas);
     
     labelContainer = document.getElementById("label-container");
-    labelContainer.innerHTML = ''; // Clear previous
+    labelContainer.innerHTML = '';
     for (let i = 0; i < maxPredictions; i++) { 
         labelContainer.appendChild(document.createElement("div"));
     }
     
-    aiStartBtn.textContent = "Camera Active";
+    // Start Loop
+    isPredicting = true;
+    window.requestAnimationFrame(loop);
+    
+    aiStartBtn.textContent = "Scanning...";
+
+    // Stop after 3 seconds
+    setTimeout(async () => {
+      isPredicting = false;
+      await webcam.stop();
+      aiStartBtn.textContent = "Finished";
+      aiStartBtn.disabled = false;
+      determineFinalResult();
+    }, 3000);
+
   } catch (error) {
     console.error("Error initializing AI:", error);
     aiStartBtn.textContent = "Error (See Console)";
@@ -383,6 +395,7 @@ async function initAI() {
 }
 
 async function loop() {
+    if (!isPredicting) return;
     webcam.update(); 
     await predict();
     window.requestAnimationFrame(loop);
@@ -395,6 +408,29 @@ async function predict() {
             prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
         labelContainer.childNodes[i].innerHTML = classPrediction;
     }
+}
+
+async function determineFinalResult() {
+  // Get one final prediction from the static canvas
+  const prediction = await model.predict(webcam.canvas);
+  
+  // Find highest probability
+  let highestProb = 0;
+  let winner = "";
+  
+  for (let i = 0; i < maxPredictions; i++) {
+      if (prediction[i].probability > highestProb) {
+          highestProb = prediction[i].probability;
+          winner = prediction[i].className;
+      }
+  }
+
+  // Display Result
+  labelContainer.innerHTML = `
+    <div style="font-size: 1.2rem; color: var(--primary); border-color: var(--primary);">
+      Result: <strong>${winner}</strong> (${(highestProb * 100).toFixed(0)}%)
+    </div>
+  `;
 }
 
 if (aiStartBtn) {
