@@ -24,4 +24,5 @@ Modify the "Pet Detector" to analyze the video feed for 3 seconds and then prese
 *   **Responsive Layout:** Optimized for both mobile and desktop views.
 *   **Web Components:** Utilizes custom elements for modular UI components like the result card.
 *   **User Feedback:** Integrated Formspree review box.
-*   **Animal Classifier (New):** AI-powered dog/cat/cow classifier using webcam input.
+*   **Animal Classifier:** AI-powered dog/cat/cow classifier using webcam input.
+*   **Monetization:** Integrated Google AdSense for site monetization.
