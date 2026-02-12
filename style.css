@@ -137,6 +137,12 @@ footer {
   margin-top: auto;
 }
 
+.section-divider {
+  border: none;
+  border-top: 2px solid oklch(90% 0.02 90);
+  width: 100%;
+}
+
 .car-rental-section {
   background: var(--surface);
   border: 1px solid oklch(90% 0.02 90);
