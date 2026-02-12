@@ -158,18 +158,91 @@ footer {
   line-height: 1.5;
 }
 
-.car-rental-link {
+.car-rental-btn {
   align-self: flex-start;
-  text-decoration: none;
   background-color: var(--secondary);
   color: var(--text-main);
   font-weight: 700;
+  font-family: inherit;
+  font-size: 0.95rem;
   padding: 0.55rem 0.9rem;
   border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s;
 }
 
-.car-rental-link:hover {
+.car-rental-btn:hover {
   filter: brightness(0.97);
+}
+
+.car-rental-btn[aria-expanded="true"] {
+  background-color: var(--primary);
+  color: white;
+}
+
+.car-rental-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.car-rental-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.car-rental-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.car-rental-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.car-rental-chip {
+  background: var(--background);
+  border: 2px solid oklch(90% 0.02 90);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.car-rental-chip:hover {
+  border-color: var(--primary);
+}
+
+.car-rental-chip.selected {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.car-rental-summary {
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-align: center;
 }
 
 /* Placeholder state for the card */

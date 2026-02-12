@@ -33,7 +33,19 @@
     <section class="car-rental-section" aria-labelledby="car-rental-title">
       <h2 id="car-rental-title">Car Rental Service</h2>
       <p>Need a ride too? Rent compact, sedan, or SUV options with flexible pickup times.</p>
-      <a class="car-rental-link" href="#" aria-label="Learn more about car rental service">Explore Car Rental</a>
+      <button class="car-rental-btn" id="car-rental-btn" aria-expanded="false" aria-controls="car-rental-options">Explore Car Rental</button>
+
+      <div class="car-rental-options" id="car-rental-options" hidden>
+        <div class="car-rental-group">
+          <label class="car-rental-label">Choose Company</label>
+          <div class="car-rental-chips" id="company-chips"></div>
+        </div>
+        <div class="car-rental-group">
+          <label class="car-rental-label">Choose Car Type</label>
+          <div class="car-rental-chips" id="car-type-chips"></div>
+        </div>
+        <div class="car-rental-summary" id="car-rental-summary" hidden></div>
+      </div>
     </section>
 
     <footer>

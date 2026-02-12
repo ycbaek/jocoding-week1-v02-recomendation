@@ -286,5 +286,53 @@ function finalizeChoice(candidates) {
 // Event Listeners
 spinBtn.addEventListener('click', spin);
 
+/**
+ * Car Rental Service
+ */
+const CAR_COMPANIES = ['Hertz', 'Enterprise', 'Avis', 'Budget', 'National'];
+const CAR_TYPES = ['Compact', 'Sedan', 'SUV', 'Minivan', 'Luxury'];
+
+const carRentalBtn = document.getElementById('car-rental-btn');
+const carRentalOptions = document.getElementById('car-rental-options');
+const companyChips = document.getElementById('company-chips');
+const carTypeChips = document.getElementById('car-type-chips');
+const carRentalSummary = document.getElementById('car-rental-summary');
+
+let selectedCompany = null;
+let selectedCarType = null;
+
+function createChips(items, container, onSelect) {
+  items.forEach(item => {
+    const chip = document.createElement('button');
+    chip.className = 'car-rental-chip';
+    chip.textContent = item;
+    chip.addEventListener('click', () => {
+      container.querySelectorAll('.car-rental-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      onSelect(item);
+      updateCarRentalSummary();
+    });
+    container.appendChild(chip);
+  });
+}
+
+function updateCarRentalSummary() {
+  if (selectedCompany && selectedCarType) {
+    carRentalSummary.textContent = `${selectedCarType} from ${selectedCompany} — Ready to book!`;
+    carRentalSummary.hidden = false;
+  } else {
+    carRentalSummary.hidden = true;
+  }
+}
+
+carRentalBtn.addEventListener('click', () => {
+  const isOpen = carRentalOptions.hidden === false;
+  carRentalOptions.hidden = isOpen;
+  carRentalBtn.setAttribute('aria-expanded', String(!isOpen));
+});
+
+createChips(CAR_COMPANIES, companyChips, (company) => { selectedCompany = company; });
+createChips(CAR_TYPES, carTypeChips, (type) => { selectedCarType = type; });
+
 // Start
 initFilters();
