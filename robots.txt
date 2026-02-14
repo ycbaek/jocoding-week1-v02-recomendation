@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lunchgenie.com/sitemap.xml
+Sitemap: https://ycbaek.com/sitemap.xml
