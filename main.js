@@ -518,6 +518,12 @@ async function initAI() {
   aiStartBtn.disabled = true;
   aiStartBtn.textContent = "Loading Model...";
 
+  if (typeof tmImage === 'undefined') {
+    console.error("Teachable Machine Image library not loaded.");
+    aiStartBtn.textContent = "Library Error";
+    return;
+  }
+
   const modelURL = URL + "model.json";
   const metadataURL = URL + "metadata.json";
 
@@ -527,7 +533,16 @@ async function initAI() {
 
     const flip = true; 
     webcam = new tmImage.Webcam(200, 200, flip); 
-    await webcam.setup(); 
+    try {
+        await webcam.setup(); 
+    } catch (e) {
+        console.error("Error setting up webcam", e);
+        aiStartBtn.textContent = "Camera Error";
+        if (e.name === "NotAllowedError") {
+            aiStartBtn.textContent = "Camera permission denied";
+        }
+        return;
+    }
     await webcam.play();
     
     // Clear previous
