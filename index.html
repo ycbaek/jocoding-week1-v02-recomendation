@@ -61,42 +61,161 @@
   </nav>
 
   <div class="app-container">
-        <header>
-          <h1>LunchGenie</h1>
-          <p>Can't decide what to eat? Let our smart lunch picker help you discover the perfect meal from over 20 curated options across 5 delicious cuisines.</p>
-        </header>
-    
-        <hr class="section-divider" />
-    
-        <!-- AI Pet Detector Section -->
-        <section class="ai-section" aria-labelledby="ai-title">
-          <h2 id="ai-title">AI Pet Detector</h2>
-          <p>Try our fun AI-powered animal classifier. Use your camera to detect whether your pet is a Dog, Cat, or Cow. Built with Google's Teachable Machine and TensorFlow.js, this tool runs entirely in your browser for fast, private classification.</p>
-    
-          <div class="ai-container">
-            <button type="button" id="ai-start-btn" class="ai-btn">Start Camera</button>
-            <div id="webcam-container" class="webcam-view"></div>
-            <div id="label-container" class="ai-labels"></div>
-          </div>
-    
-          <h3 style="color: var(--text-main); font-size: 1.1rem; margin-top: 0.5rem;">How the Pet Detector Works</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; text-align: left;">Our AI model was trained using Google's Teachable Machine platform with hundreds of labeled images. When you start the camera, TensorFlow.js loads the model directly into your browser. The detector scans for 3 seconds, analyzing each frame to classify what it sees. No images are uploaded to any server - all processing happens locally on your device for complete privacy.</p>
-        </section>
-    
-        <!-- Lunch Picker Section -->
-        <main>
-          <section class="filters" id="filters" aria-label="Food category filters">
-            <!-- Filters will be injected here via JS -->
-          </section>
-    
-          <div class="result-area">
-            <lunch-card id="result-card"></lunch-card>
-          </div>
-    
-          <div class="controls">
-            <button id="spin-btn" class="spin-button">Find Lunch!</button>
-          </div>
-        </main>    <!-- FAQ Section -->
+    <header>
+      <h1>LunchGenie</h1>
+      <p>Can't decide what to eat? Let our smart lunch picker help you discover the perfect meal from over 20 curated options across 5 delicious cuisines.</p>
+    </header>
+
+    <!-- Lunch Picker Section -->
+    <main>
+      <section class="filters" id="filters" aria-label="Food category filters">
+        <!-- Filters will be injected here via JS -->
+      </section>
+
+      <div class="result-area">
+        <lunch-card id="result-card"></lunch-card>
+      </div>
+
+      <div class="controls">
+        <button id="spin-btn" class="spin-button">Find Lunch!</button>
+      </div>
+    </main>
+
+    <hr class="section-divider" />
+
+    <!-- How It Works Section -->
+    <section class="info-section" aria-labelledby="how-it-works-title">
+      <h2 id="how-it-works-title">How LunchGenie Works</h2>
+      <p>LunchGenie is designed to solve one of life's most common daily dilemmas: "What should I eat for lunch?" Our recommendation engine curates over 20 meals spanning five popular cuisine categories to help you explore new dishes or rediscover old favorites.</p>
+
+      <div class="tip-grid">
+        <div class="tip-card">
+          <div class="tip-icon">1</div>
+          <h4>Filter by Cuisine</h4>
+          <p>Choose from Fast Food, Healthy, Asian, Mexican, or Italian to narrow down your options.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">2</div>
+          <h4>Hit "Find Lunch!"</h4>
+          <p>Our picker spins through the options and selects a meal just for you.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">3</div>
+          <h4>See the Details</h4>
+          <p>View calories, prep time, price range, and a detailed description of your meal.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">4</div>
+          <h4>Spin Again</h4>
+          <p>Not feeling it? Spin as many times as you like until you find the perfect choice.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Lunch Tips Section -->
+    <section class="info-section" aria-labelledby="lunch-tips-title">
+      <h2 id="lunch-tips-title">Healthy Lunch Tips</h2>
+      <p>Making smart choices at lunchtime can boost your energy, improve focus, and keep you feeling great all afternoon. Here are some expert-backed tips for a better midday meal:</p>
+
+      <h3>Balance Your Plate</h3>
+      <p>Aim for a combination of lean protein, complex carbohydrates, and healthy fats. This mix provides sustained energy without the dreaded afternoon slump. For example, a grilled chicken wrap with avocado and whole wheat tortilla checks all the boxes.</p>
+
+      <h3>Watch Your Portions</h3>
+      <p>Overeating at lunch can lead to drowsiness. A meal between 400-600 calories is ideal for most adults. Our meal cards show estimated calorie counts to help you make informed decisions.</p>
+
+      <h3>Stay Hydrated</h3>
+      <p>Pair your lunch with water instead of sugary drinks. Dehydration can mimic hunger, causing you to eat more than you need. Herbal teas and infused water are also great alternatives.</p>
+
+      <h3>Try Something New</h3>
+      <p>Eating the same lunch every day can lead to nutritional gaps and boredom. Use LunchGenie to discover new dishes you might not have considered. Exploring different cuisines introduces variety in both flavors and nutrients.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Cuisine Guide Section -->
+    <section class="info-section" aria-labelledby="cuisine-guide-title">
+      <h2 id="cuisine-guide-title">Cuisine Guide</h2>
+      <p>Learn about the five cuisine categories featured on LunchGenie and what makes each one special.</p>
+
+      <h3>Fast Food</h3>
+      <p>Quick, satisfying, and affordable. From classic cheeseburgers to crispy fried chicken sandwiches, fast food options are perfect when you're short on time. Our curated selections focus on the most popular and well-loved items that deliver on taste.</p>
+
+      <h3>Healthy</h3>
+      <p>Nutrient-dense meals that don't compromise on flavor. Options like quinoa Buddha bowls, grilled salmon, and acai smoothie bowls provide essential vitamins, minerals, and lean proteins. Ideal for health-conscious diners looking for meals under 400 calories.</p>
+
+      <h3>Asian</h3>
+      <p>A diverse category spanning Japanese sushi, Thai noodles, Korean rice bowls, and Vietnamese pho. Asian cuisine is known for its bold flavors, fresh ingredients, and aromatic spices. Many dishes offer an excellent balance of protein, vegetables, and carbohydrates.</p>
+
+      <h3>Mexican</h3>
+      <p>Vibrant and flavorful, Mexican cuisine features dishes built around corn, beans, chilies, and fresh herbs. From street tacos to loaded burrito bowls, these meals are customizable and often provide a good mix of fiber and protein.</p>
+
+      <h3>Italian</h3>
+      <p>Known for its simplicity and quality ingredients, Italian cuisine emphasizes fresh tomatoes, olive oil, herbs, and handmade pastas. From classic margherita pizza to creamy risotto, these dishes are all about celebrating the natural flavor of each ingredient.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Car Rental Section -->
+    <section class="car-rental-section" aria-labelledby="car-rental-title">
+      <h2 id="car-rental-title">Car Rental Service</h2>
+      <p>Planning to pick up lunch from across town or heading out on a road trip? Our car rental comparison tool lets you quickly browse options from five major rental companies. Select a company and car type to see a summary of your choice.</p>
+      <button class="car-rental-btn" id="car-rental-btn" aria-expanded="false" aria-controls="car-rental-options">Explore Car Rental</button>
+
+      <div class="car-rental-options" id="car-rental-options" hidden>
+        <div class="car-rental-group">
+          <label class="car-rental-label">Choose Company</label>
+          <div class="car-rental-chips" id="company-chips"></div>
+        </div>
+        <div class="car-rental-group">
+          <label class="car-rental-label">Choose Car Type</label>
+          <div class="car-rental-chips" id="car-type-chips"></div>
+        </div>
+        <div class="car-rental-summary" id="car-rental-summary" hidden></div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Feedback Section -->
+    <section class="review-section" aria-labelledby="review-title">
+      <h2 id="review-title">Share Your Thoughts</h2>
+      <p>How was your LunchGenie experience? Your feedback helps us improve our recommendations and add new features. We read every message and appreciate your input.</p>
+
+      <form action="https://formspree.io/f/xbdadvvd" method="POST" class="review-form">
+        <div class="form-group">
+          <label for="email">Your email:</label>
+          <input type="email" name="email" id="email" placeholder="genie@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Your message:</label>
+          <textarea name="message" id="message" placeholder="Tell us what you think, suggest new meals, or report an issue..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Feedback</button>
+      </form>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- AI Pet Detector Section -->
+    <section class="ai-section" aria-labelledby="ai-title">
+      <h2 id="ai-title">AI Pet Detector</h2>
+      <p>Try our fun AI-powered animal classifier. Use your camera to detect whether your pet is a Dog, Cat, or Cow. Built with Google's Teachable Machine and TensorFlow.js, this tool runs entirely in your browser for fast, private classification.</p>
+
+      <div class="ai-container">
+        <button type="button" id="ai-start-btn" class="ai-btn">Start Camera</button>
+        <div id="webcam-container" class="webcam-view"></div>
+        <div id="label-container" class="ai-labels"></div>
+      </div>
+
+      <h3 style="color: var(--text-main); font-size: 1.1rem; margin-top: 0.5rem;">How the Pet Detector Works</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; text-align: left;">Our AI model was trained using Google's Teachable Machine platform with hundreds of labeled images. When you start the camera, TensorFlow.js loads the model directly into your browser. The detector scans for 3 seconds, analyzing each frame to classify what it sees. No images are uploaded to any server - all processing happens locally on your device for complete privacy.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- FAQ Section -->
     <section class="info-section" aria-labelledby="faq-title">
       <h2 id="faq-title">Frequently Asked Questions</h2>
 
