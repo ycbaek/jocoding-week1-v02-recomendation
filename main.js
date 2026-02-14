@@ -522,11 +522,11 @@ async function initAI() {
   const metadataURL = URL + "metadata.json";
 
   try {
-    model = await window.tmImage.load(modelURL, metadataURL);
+    model = await tmImage.load(modelURL, metadataURL);
     maxPredictions = model.getTotalClasses();
 
     const flip = true; 
-    webcam = new window.tmImage.Webcam(200, 200, flip); 
+    webcam = new tmImage.Webcam(200, 200, flip); 
     await webcam.setup(); 
     await webcam.play();
     
