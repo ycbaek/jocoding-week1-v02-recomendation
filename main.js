@@ -517,3 +517,113 @@ if (navToggle && navLinks) {
     navLinks.classList.toggle('open');
   });
 }
+
+/**
+ * Animal Image Recommendation (Teachable Machine)
+ */
+const animalRecURL = "https://teachablemachine.withgoogle.com/models/FIVVxlkii/";
+let animalRecModel, animalRecWebcam, animalRecLabelContainer, animalRecMaxPredictions;
+const animalRecStartBtn = document.getElementById('animal-rec-start-btn');
+let isAnimalRecPredicting = false;
+
+async function initAnimalRec() {
+  animalRecStartBtn.disabled = true;
+  animalRecStartBtn.textContent = "Loading Model...";
+
+  if (typeof tmImage === 'undefined') {
+    console.error("Teachable Machine Image library not loaded.");
+    animalRecStartBtn.textContent = "Library Error";
+    return;
+  }
+
+  const modelURL = animalRecURL + "model.json";
+  const metadataURL = animalRecURL + "metadata.json";
+
+  try {
+    animalRecModel = await tmImage.load(modelURL, metadataURL);
+    animalRecMaxPredictions = animalRecModel.getTotalClasses();
+
+    const flip = true;
+    animalRecWebcam = new tmImage.Webcam(200, 200, flip);
+
+    try {
+        await animalRecWebcam.setup();
+    } catch (e) {
+        console.error("Error setting up webcam", e);
+        animalRecStartBtn.textContent = "Camera Error";
+        if (e.name === "NotAllowedError") {
+            animalRecStartBtn.textContent = "Camera permission denied";
+        }
+        return;
+    }
+
+    await animalRecWebcam.play();
+
+    const webcamContainer = document.getElementById("animal-rec-webcam-container");
+    webcamContainer.innerHTML = '';
+    webcamContainer.appendChild(animalRecWebcam.canvas);
+
+    animalRecLabelContainer = document.getElementById("animal-rec-label-container");
+    animalRecLabelContainer.innerHTML = '';
+    for (let i = 0; i < animalRecMaxPredictions; i++) {
+        animalRecLabelContainer.appendChild(document.createElement("div"));
+    }
+
+    isAnimalRecPredicting = true;
+    window.requestAnimationFrame(animalRecLoop);
+
+    animalRecStartBtn.textContent = "Scanning...";
+
+    setTimeout(async () => {
+      isAnimalRecPredicting = false;
+      await animalRecWebcam.stop();
+      animalRecStartBtn.textContent = "Finished";
+      animalRecStartBtn.disabled = false;
+      determineAnimalRecFinalResult();
+    }, 3000);
+
+  } catch (error) {
+    console.error("Error initializing Animal Recommendation:", error);
+    animalRecStartBtn.textContent = "Error (See Console)";
+    animalRecStartBtn.disabled = false;
+  }
+}
+
+async function animalRecLoop() {
+    if (!isAnimalRecPredicting) return;
+    animalRecWebcam.update();
+    await animalRecPredict();
+    window.requestAnimationFrame(animalRecLoop);
+}
+
+async function animalRecPredict() {
+    const prediction = await animalRecModel.predict(animalRecWebcam.canvas);
+    for (let i = 0; i < animalRecMaxPredictions; i++) {
+        const classPrediction =
+            prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
+        animalRecLabelContainer.childNodes[i].innerHTML = classPrediction;
+    }
+}
+
+async function determineAnimalRecFinalResult() {
+  const prediction = await animalRecModel.predict(animalRecWebcam.canvas);
+  let highestProb = 0;
+  let winner = "";
+  for (let i = 0; i < animalRecMaxPredictions; i++) {
+      if (prediction[i].probability > highestProb) {
+          highestProb = prediction[i].probability;
+          winner = prediction[i].className;
+      }
+  }
+
+  animalRecLabelContainer.innerHTML = `
+    <div style="font-size: 1.2rem; color: var(--primary); border-color: var(--primary);">
+      We recommend a <strong>${winner}</strong> picture for you!
+    </div>
+  `;
+}
+
+if (animalRecStartBtn) {
+  animalRecStartBtn.addEventListener('click', initAnimalRec);
+}
+

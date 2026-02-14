@@ -30,6 +30,10 @@
   <meta name="google-adsense-account" content="ca-pub-6454293227427570">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6454293227427570"
      crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@latest/dist/tf-converter.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl@latest/dist/tf-backend-webgl.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/tm-image@0.8.0/dist/tm-image.min.js"></script>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -64,9 +68,24 @@
 
     <!-- Lunch Picker Section -->
     <main>
-      <section class="filters" id="filters" aria-label="Food category filters">
-        <!-- Filters will be injected here via JS -->
-      </section>
+        <!-- Animal Image Recommendation Section -->
+        <section class="ai-section" aria-labelledby="animal-rec-title">
+          <h2 id="animal-rec-title">Animal Image Recommendation</h2>
+          <p>Use your camera to get a recommendation for a dog or a cat picture.</p>
+    
+          <div class="ai-container">
+            <button type="button" id="animal-rec-start-btn" class="ai-btn">Start Camera</button>
+            <div id="animal-rec-webcam-container" class="webcam-view"></div>
+            <div id="animal-rec-label-container" class="ai-labels"></div>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Lunch Picker Section -->
+        <section class="filters" id="filters" aria-label="Food category filters">
+            <!-- Filters will be injected here via JS -->
+        </section>
 
       <div class="result-area">
         <lunch-card id="result-card"></lunch-card>
