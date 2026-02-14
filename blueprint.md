@@ -10,7 +10,7 @@ LunchGenie is a single-page web application designed to solve the "what's for lu
 *   **Interactive UI:** "Spin" button with visual feedback.
 *   **Responsive Layout:** Optimized for both mobile and desktop views.
 *   **Web Components:** Utilizes custom elements for modular UI components like the result card.
-*   **User Feedback:** Integrated Formspree review box.
+*   **User Feedback:** Integrated Formspree review box and Userback feedback service.
 *   **Animal Classifier:** AI-powered dog/cat/cow classifier using webcam input.
 *   **Monetization:** Integrated Google AdSense for site monetization.
 
